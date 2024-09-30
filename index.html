@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Greeting</title>
+    <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(nature-3082832_1920.jpg);
+        }
+
+        .container {
+            background-color: #bccdcc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            /* font-family: Georgia, 'Times New Roman', Times, serif; */
+            color: #333;
+        }
+
+        input {
+            width: 93%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+         select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+         button {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+             color: white;
+             background-color: #244440;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #203432;
+        }
+
+        .greeting {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Greeting Generator</h1>
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" placeholder="Your name">
+
+        <label for="timeOfDay">Select time of day:</label>
+        <select id="timeOfDay">
+            <option value="" disabled selected>Select</option>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+        </select>
+
+        <button onclick="generateGreeting()">Generate Greeting</button>
+
+        <p class="greeting" id="greetingMessage"></p>
+    </div>
+
+    <script>
+        function generateGreeting() {
+            const name = document.getElementById('name').value;
+            const timeOfDay = document.getElementById('timeOfDay').value;
+            const greetingMessage = document.getElementById('greetingMessage');
+
+            if (name === '' || timeOfDay === '') {
+                greetingMessage.textContent = 'Please enter your name and select the time of day.';
+                return;
+            }
+
+            let greeting;
+
+            // Conditionals based on time of day
+            if (timeOfDay === 'morning') {
+                greeting = `Good morning, ${name}!`;
+            } else if (timeOfDay === 'afternoon') {
+                greeting = `Good afternoon, ${name}!`;
+            } else if (timeOfDay === 'evening') {
+                greeting = `Good evening, ${name}!`;
+            } else {
+                greeting = 'Hello!';
+            }
+
+            greetingMessage.textContent = greeting;
+        }
+    </script>
+
+</body>
+</html>
